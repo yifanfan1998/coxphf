@@ -134,7 +134,7 @@ function(
 ){
 ### by MP und GH, 2006-2018
   call <- match.call()
-  mf <- match.call(expand.dots =FALSE)
+  mf <- match.call(expand.dots = FALSE)
   m <- match(c("formula","data"), names(mf), 0L)
   mf <- mf[c(1, m)]
   mf$drop.unused.levels <- TRUE
@@ -149,7 +149,7 @@ function(
   if(!is.logical(firth)) stop("Please set option firth to TRUE or FALSE.\n")
   if(!is.logical(pl)) stop("Please set option pl to TRUE or FALSE.\n")
 
-	obj <- decomposeSurv(formula, data, sort=TRUE)
+	obj <- decomposeSurv(formula, data, sort = FALSE)
   NTDE <- obj$NTDE
 	mmm <- cbind(obj$mm1, obj$timedata)
         
