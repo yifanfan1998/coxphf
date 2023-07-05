@@ -36,7 +36,7 @@
 #' @param penalty strength of Firth-type penalty. Defaults to 0.5.
 #' 
 #' @return The object returned is of the class \code{coxphf} and has the following attributes:
-#'  \item{coefficients}{the parameter estimates}
+#' \item{coefficients}{the parameter estimates}
 #' \item{alpha}{the significance level = 1 - confidence level}
 #' \item{var}{the estimated covariance matrix}
 #' \item{df}{the degrees of freedom}
@@ -54,6 +54,7 @@
 #' \item{ci.upper}{the upper confidence limits}
 #' \item{prob}{the p-values}
 #' \item{call}{the function call}
+#' \item{terms}{the terms object used}
 #' \item{iter.ci}{the numbers of iterations needed for profile likelihood confidence interval estimation, and for maximizing the restricted likelihood for p-value computation.}
 #' 
 #' @export
@@ -254,7 +255,7 @@ function(
     fit$prob <- 1 - pchisq((coefs^2/vars), 1)
   }
   names(fit$prob) <- names(fit$ci.upper) <- names(fit$ci.lower) <- cov.name
-  fit$terms <- terms(formula)
+  fit$terms <- mt
   attr(fit, "class") <- c("coxphf", "coxph")
   return(fit)
 }

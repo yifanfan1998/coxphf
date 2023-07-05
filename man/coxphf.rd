@@ -53,7 +53,7 @@ unless the new likelihood is greater than the old one, maximally doing \code{max
 }
 \value{
 The object returned is of the class \code{coxphf} and has the following attributes:
- \item{coefficients}{the parameter estimates}
+\item{coefficients}{the parameter estimates}
 \item{alpha}{the significance level = 1 - confidence level}
 \item{var}{the estimated covariance matrix}
 \item{df}{the degrees of freedom}
@@ -71,6 +71,7 @@ The object returned is of the class \code{coxphf} and has the following attribut
 \item{ci.upper}{the upper confidence limits}
 \item{prob}{the p-values}
 \item{call}{the function call}
+\item{terms}{the terms object used}
 \item{iter.ci}{the numbers of iterations needed for profile likelihood confidence interval estimation, and for maximizing the restricted likelihood for p-value computation.}
 }
 \description{
@@ -177,7 +178,9 @@ summary(fit.breast)
 
 }
 \references{
-
+Firth D (1993). Bias reduction of maximum likelihood estimates. \emph{Biometrika} 80:27--38.
+Heinze G and Schemper M (2001). A Solution to the Problem of Monotone Likelihood in Cox Regression. \emph{Biometrics} 57(1):114--119. 
+Heinze G (1999). Technical Report 10/1999: The application of Firth's procedure to Cox and logistic regression. Section of Clinical Biometrics, Department of Medical Computer Sciences, University of Vienna, Vienna.
 
 Firth D (1993). Bias reduction of maximum likelihood estimates. \emph{Biometrika} 80:27--38.
 
