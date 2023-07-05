@@ -254,6 +254,7 @@ function(
     fit$prob <- 1 - pchisq((coefs^2/vars), 1)
   }
   names(fit$prob) <- names(fit$ci.upper) <- names(fit$ci.lower) <- cov.name
+  fit$terms <- terms(formula)
   attr(fit, "class") <- c("coxphf", "coxph")
   return(fit)
 }
