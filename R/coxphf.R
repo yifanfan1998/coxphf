@@ -148,6 +148,15 @@ function(
 
   if(!is.logical(firth)) stop("Please set option firth to TRUE or FALSE.\n")
   if(!is.logical(pl)) stop("Please set option pl to TRUE or FALSE.\n")
+  
+  # if only an intercept is included in the formula
+  # fit a coxph model instead
+  # since penalisation does not affect the baseline estimate
+  if(ncol(x) == 0 || (ncol(x) == 1 && colnames(x) == "(Intercept)")){
+    fit <- survival::coxph(formula, data)
+    return(fit)
+  }
+  
 
 	obj <- decomposeSurv(formula, data, sort = FALSE)
   NTDE <- obj$NTDE
@@ -246,5 +255,5 @@ function(
   }
   names(fit$prob) <- names(fit$ci.upper) <- names(fit$ci.lower) <- cov.name
   attr(fit, "class") <- c("coxphf", "coxph")
-  fit
+  return(fit)
 }
