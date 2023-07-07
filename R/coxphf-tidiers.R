@@ -14,6 +14,7 @@
 #' @return A tidy [tibble::tibble()] summarizing component-level
 #'   information about the model
 #' 
+#' import tibble
 #' @export
 
 tidy.coxphf <- function(x, conf.int = FALSE, conf.level = 0.95, exponentiate = FALSE, ...){
@@ -34,7 +35,7 @@ tidy.coxphf <- function(x, conf.int = FALSE, conf.level = 0.95, exponentiate = F
   }
   
   if(conf.int){
-    ci <- confint(x, level = conf.level)
+    ci <- stats::confint(x, level = conf.level)
     colnames(ci) <- c("conf.low", "conf.high")
     if(exponentiate) ci <- exp(ci)
     result <- cbind(

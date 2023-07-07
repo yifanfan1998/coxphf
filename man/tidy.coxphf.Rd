@@ -25,6 +25,8 @@ estimates on an exponential scale.}
 \value{
 A tidy [tibble::tibble()] summarizing component-level
   information about the model
+
+import tibble
 }
 \description{
 Tidy a coxphf object
