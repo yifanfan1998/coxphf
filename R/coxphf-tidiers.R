@@ -1,4 +1,7 @@
-#' Tidy a(n) coxphf object
+
+
+
+#' Tidy a coxphf object
 #'
 #' @param x A `coxphf` object.
 #' @param conf.int Logical indicating whether or not to include 
@@ -9,10 +12,14 @@
 #'   95 percent confidence interval.
 #' @param exponentiate Logical indicating whether or not to display coefficient
 #'   estimates on an exponential scale.
+#' @param data the dataset used to fit the model.
 #' @param ... Unused, included for generic consistency only.
 #' @return A tidy [tibble::tibble()] summarizing component-level
 #'   information about the model
-#'   
+#' 
+#' @importFrom generics glance  
+#' @export tidy.coxphf
+
 tidy.coxphf <- function(x, conf.int = FALSE, conf.level = 0.95, exponentiate = FALSE, ...){
   
   result <- with(
@@ -43,3 +50,42 @@ tidy.coxphf <- function(x, conf.int = FALSE, conf.level = 0.95, exponentiate = F
   
   return(result)
 }
+
+#' @export
+glance.coxphf <- function(x, ...){
+  
+  result <- with(
+    x,
+    tibble::tibble(
+      n = n,
+      nevent = sum(y[, "status"], na.rm = TRUE),
+      logLik = as.numeric(stats::logLik(x)),
+      AIC = stats::AIC(x)
+    )
+  )
+  
+  return(result)
+  
+}
+
+#' @export
+augment.coxphf <- function(x, data = x$y, ...){
+  
+  result <- cbind(
+      data,
+      ".linear.predictor" = x$linear.predictor
+    ) |> tibble::as_tibble()
+  
+  return(result)
+  
+}
+
+
+#' @export
+generics::glance
+
+
+
+
+
+
