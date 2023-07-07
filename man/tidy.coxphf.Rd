@@ -4,7 +4,7 @@
 \alias{tidy.coxphf}
 \title{Tidy a coxphf object}
 \usage{
-\method{tidy}{coxphf}(x, conf.int = FALSE, conf.level = 0.95, exponentiate = FALSE, ...)
+tidy.coxphf(x, conf.int = FALSE, conf.level = 0.95, exponentiate = FALSE, ...)
 }
 \arguments{
 \item{x}{A `coxphf` object.}

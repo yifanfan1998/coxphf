@@ -4,7 +4,7 @@
 \alias{augment.coxphf}
 \title{Augment a coxphf object}
 \usage{
-\method{augment}{coxphf}(x, data = x$y, ...)
+augment.coxphf(x, data = x$y, ...)
 }
 \arguments{
 \item{x}{A `coxphf` object.}

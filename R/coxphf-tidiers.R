@@ -83,9 +83,9 @@ glance.coxphf <- function(x, ...){
 augment.coxphf <- function(x, data = x$y, ...){
   
   result <- cbind(
-      data,
-      ".linear.predictor" = x$linear.predictor
-    ) |> tibble::as_tibble()
+    data,
+    ".linear.predictor" = x$linear.predictor
+  ) |> tibble::as_tibble()
   
   return(result)
   
