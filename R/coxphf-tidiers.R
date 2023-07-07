@@ -1,8 +1,6 @@
 
-
-
 #' Tidy a coxphf object
-#'
+#' 
 #' @param x A `coxphf` object.
 #' @param conf.int Logical indicating whether or not to include 
 #'   a confidence interval in the tidied output. Defaults to FALSE.
@@ -12,13 +10,11 @@
 #'   95 percent confidence interval.
 #' @param exponentiate Logical indicating whether or not to display coefficient
 #'   estimates on an exponential scale.
-#' @param data the dataset used to fit the model.
 #' @param ... Unused, included for generic consistency only.
 #' @return A tidy [tibble::tibble()] summarizing component-level
 #'   information about the model
 #' 
-#' @importFrom generics glance  
-#' @export tidy.coxphf
+#' @export
 
 tidy.coxphf <- function(x, conf.int = FALSE, conf.level = 0.95, exponentiate = FALSE, ...){
   
@@ -51,6 +47,13 @@ tidy.coxphf <- function(x, conf.int = FALSE, conf.level = 0.95, exponentiate = F
   return(result)
 }
 
+#' Glance at a coxphf object
+#' 
+#' @param x A `coxphf` object.
+#' @param ... Unused, included for generic consistency only.
+#' @return A tidy [tibble::tibble()] summarizing component-level
+#'   information about the model
+#' 
 #' @export
 glance.coxphf <- function(x, ...){
   
@@ -68,6 +71,14 @@ glance.coxphf <- function(x, ...){
   
 }
 
+#' Augment a coxphf object
+#' 
+#' @param x A `coxphf` object.
+#' @param data the dataset used to fit the model.
+#' @param ... Unused, included for generic consistency only.
+#' @return A tidy [tibble::tibble()] summarizing component-level
+#'   information about the model
+#' 
 #' @export
 augment.coxphf <- function(x, data = x$y, ...){
   
@@ -80,7 +91,7 @@ augment.coxphf <- function(x, data = x$y, ...){
   
 }
 
-
+#' @importFrom generics glance 
 #' @export
 generics::glance
 

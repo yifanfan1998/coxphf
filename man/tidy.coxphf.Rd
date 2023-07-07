@@ -4,7 +4,7 @@
 \alias{tidy.coxphf}
 \title{Tidy a coxphf object}
 \usage{
-tidy.coxphf(x, conf.int = FALSE, conf.level = 0.95, exponentiate = FALSE, ...)
+\method{tidy}{coxphf}(x, conf.int = FALSE, conf.level = 0.95, exponentiate = FALSE, ...)
 }
 \arguments{
 \item{x}{A `coxphf` object.}
@@ -21,8 +21,6 @@ and less than 1. Defaults to 0.95, which corresponds to a
 estimates on an exponential scale.}
 
 \item{...}{Unused, included for generic consistency only.}
-
-\item{data}{the dataset used to fit the model.}
 }
 \value{
 A tidy [tibble::tibble()] summarizing component-level
