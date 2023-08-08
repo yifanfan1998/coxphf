@@ -159,7 +159,8 @@ function(
   }
   
 
-	obj <- decomposeSurv(formula, data, sort = FALSE)
+	obj <- decomposeSurv(formula, data, sort = TRUE)
+	id <- as.numeric(rownames(obj$resp)) # this id is the row index before sorting
   NTDE <- obj$NTDE
 	mmm <- cbind(obj$mm1, obj$timedata)
         
@@ -213,7 +214,7 @@ function(
               method.ties = "breslow", n = n, ##terms = terms(formula),
               y = obj$resp, formula = formula, call = match.call())
   fit$means <- apply(mmm, 2, mean)
-  fit$linear.predictors <- as.vector(scale(mmm, fit$means, scale=FALSE) %*% coefs)
+  fit$linear.predictors[id] <- as.vector(scale(mmm, fit$means, scale=FALSE) %*% coefs)
 	if(fit$iter>=maxit) warning("Convergence for parameter estimation not attained in ", maxit, " iterations.\n")
   if(firth) fit$method <- "Penalized ML"
   else fit$method <- "Standard ML"
