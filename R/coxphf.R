@@ -158,9 +158,12 @@ function(
     return(fit)
   }
   
-
+  # Note that sorting is important because the Fortran code below expects
+  # the data to be sorted by time and status
 	obj <- decomposeSurv(formula, data, sort = TRUE)
-	id <- as.numeric(rownames(obj$resp)) # this id is the row index before sorting
+	
+	# id is the row index before sorting (needed to correctly match the linear predictor later)
+	id <- as.numeric(rownames(obj$resp)) 
   NTDE <- obj$NTDE
 	mmm <- cbind(obj$mm1, obj$timedata)
         
