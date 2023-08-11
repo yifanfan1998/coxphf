@@ -77,7 +77,7 @@ coxphftest( formula=Surv(start, stop, event) ~ x1+x2+x3, test=~x1+x2,  data=test
 
 # How to test total effect of a variable with time-dependent effect
 
-# NOT RUN (does not work currently)
+# NOT RUN (works)
 #fitt<- coxphf( formula=Surv(start, stop, event) ~ x1+x2+x3*stop, data=testdata, pl=FALSE)
 
 #test <- coxphf(formula=Surv(start, stop, event) ~ x1+x2+x3*stop, data=testdata, adapt=c(1,1,0,0))
