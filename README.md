@@ -14,7 +14,7 @@ install.packages("coxphf")
 
 # Or the development version from GitHub:
 # install.packages("devtools")
-devtools::install_github("georgheinze/coxphf")
+devtools::install_github("yifanfan1998/coxphf")
 ```
 
 ## Usage
