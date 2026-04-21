@@ -239,7 +239,8 @@ function(
     fit$method.ci <- "Profile Likelihood"
     fit$ci.lower <- exp(value$outtab[4,  ] / Z.sd)
     fit$ci.upper <- exp(value$outtab[5,  ] / Z.sd)
-    fit$prob <- 1 - pchisq(value$outtab[6,  ], 1)
+    #fit$prob <- 1 - pchisq(value$outtab[6,  ], 1)
+	fit$prob <- pchisq(value$outtab[6,  ], 1, lower.tail = FALSE)  
     fit$iter.ci<-t(value$outtab[7:9,])
     colnames(fit$iter.ci)<-c("Lower", "Upper", "P-value")
     rownames(fit$iter.ci)<-cov.name
