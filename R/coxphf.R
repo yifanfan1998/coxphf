@@ -257,7 +257,8 @@ function(
     fit$method.ci <- "Wald"
     fit$ci.lower <- exp(coefs + qnorm(alpha/2) * vars^0.5)
     fit$ci.upper <- exp(coefs + qnorm(1 - alpha/2) * vars^0.5)
-    fit$prob <- 1 - pchisq((coefs^2/vars), 1)
+    #fit$prob <- 1 - pchisq((coefs^2/vars), 1)
+	fit$prob <- pchisq((coefs^2/vars), 1, lower.tail = FALSE)
   }
   names(fit$prob) <- names(fit$ci.upper) <- names(fit$ci.lower) <- cov.name
   fit$terms <- mt
