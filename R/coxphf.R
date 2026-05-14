@@ -267,7 +267,7 @@ function(
 }
 
 #' @export
-coxphf_p_log <-
+coxphf_log_p <-
 function(
  formula,	# formula where .time. represents time for time-interactions
  data,
